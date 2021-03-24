@@ -29,6 +29,7 @@ const SigninForm = () => {
 
   return (
     <form className={styles.primary_form} action="" onSubmit={handleSubmit}>
+      {/* @ts-ignore */}
       {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
         Email
