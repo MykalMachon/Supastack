@@ -1,11 +1,10 @@
 import useSupabase from 'hooks/useSupabase';
-import { useRouter } from 'next/router';
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
+import styles from './Forms.module.scss';
 
 const SigninForm = () => {
   const client = useSupabase();
-  const router = useRouter();
 
   const initState: FormState = { status: 'idle', error: null };
   const [formState, dispatch] = useReducer(formReducer, initState);
@@ -13,10 +12,15 @@ const SigninForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_FORM' });
-    const { user, error } = await client.auth.signIn({
-      email: e.target.email.value,
-      password: e.target.password.value,
-    });
+    const { user, error } = await client.auth.signIn(
+      {
+        email: e.target.email.value,
+        password: e.target.password.value,
+      },
+      {
+        redirectTo: '/',
+      }
+    );
     if (error) {
       return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
     }
@@ -24,7 +28,7 @@ const SigninForm = () => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
+    <form className={styles.primary_form} action="" onSubmit={handleSubmit}>
       {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
         Email

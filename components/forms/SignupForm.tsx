@@ -5,7 +5,6 @@ import { formReducer, FormState } from './utils';
 
 const SignupForm = () => {
   const client = useSupabase();
-  const router = useRouter();
 
   const initState: FormState = { status: 'idle', error: null };
   const [formState, dispatch] = useReducer(formReducer, initState);
@@ -17,7 +16,6 @@ const SignupForm = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     });
-    console.log(user);
     if (error)
       return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
     if (user) return dispatch({ type: 'SUBMIT_SUCCESS' });
