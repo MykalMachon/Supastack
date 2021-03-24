@@ -1,0 +1,107 @@
+:root {
+  --primaryBg: #f3f4f6;
+  --cardBg: #f9fafb;
+  --highlightBg: #ec4899;
+
+  --headingText: #111827;
+  --bodyText: #374151;
+  --highlightText: #f472b6;
+  --highlightGradient: linear-gradient(62deg, #ec4899 0%, #f472b6 100%);
+
+  --contentMaxWidth: 1000px;
+  @media screen and (max-width: 1000px) {
+    --contentMaxWidth: 800px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primaryBg: #111827;
+    --cardBg: #1f2937;
+    --highlightBg: #ec4899;
+
+    --headingText: #f9fafb;
+    --bodyText: #e5e7eb;
+    --highlightText: #f472b6;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  background: var(--primaryBg);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--headingText);
+  }
+  p,
+  input,
+  textarea,
+  label,
+  strong,
+  span {
+    color: var(--bodyText);
+  }
+  a {
+    color: var(--highlightText);
+  }
+}
+
+input,
+textarea {
+  background: var(--cardBg);
+  margin: 0.25em 0px;
+  border: 1px solid var(--highlightBg);
+  padding: 0.75em 0.75em;
+  border-radius: 4px;
+}
+
+button {
+  background: var(--highlightBg);
+  color: #f9fafb;
+  font-weight: bold;
+  padding: 0.75em 1.25em;
+  border: 1px solid var(--highlightBg);
+  border-radius: 6px;
+  &:hover {
+    background: var(--highlightBg);
+    cursor: pointer;
+  }
+  &:disabled {
+    opacity: 0.6;
+  }
+  &.secondary {
+    background: var(--cardBg);
+    border: 1px solid var(--cardBg);
+    color: var(--bodyText);
+  }
+}
+
+// generics that can be used across all classes
+
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container {
+  max-width: var(--contentMaxWidth);
+  width: 100%;
+  padding: 0px 1em;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}

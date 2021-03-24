@@ -1,7 +1,9 @@
 import { AuthProvider } from '@components/context/AuthContext';
 import { SupaProvider } from '@components/context/SupaContext';
-import Layout from '@components/layout/Layout';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
+import Layout from '@components/layout/Layout';
+
+import '@styles/main.scss';
 
 const SupastackApp = ({ Component, pageProps }: AppProps) => {
   return (
