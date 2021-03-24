@@ -10,12 +10,6 @@ const SigninForm = () => {
   const initState: FormState = { status: 'idle', error: null };
   const [formState, dispatch] = useReducer(formReducer, initState);
 
-  useEffect(() => {
-    if (client.auth.user != null) {
-      router.push('/');
-    }
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_FORM' });
@@ -23,15 +17,15 @@ const SigninForm = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     });
-    console.log(user);
-    if (error)
+    if (error) {
       return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
+    }
     if (user) return dispatch({ type: 'SUBMIT_SUCCESS' });
   };
 
   return (
     <form action="" onSubmit={handleSubmit}>
-      {formState.error ? <p>{formState.error}</p> : null}
+      {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
         Email
         <input type="email" name="email" id="email" />
