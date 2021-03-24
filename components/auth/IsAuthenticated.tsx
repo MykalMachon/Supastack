@@ -1,9 +1,14 @@
 import useAuth from 'hooks/useAuth';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { ReactChildren, useEffect } from 'react';
 
-const IsAuthenticated = ({ children, strict }) => {
+type isAuthenticatedProps = {
+  children: any;
+  strict?: boolean;
+};
+
+const IsAuthenticated = ({ children, strict }: isAuthenticatedProps) => {
   const { user } = useAuth();
   const router = useRouter();
 

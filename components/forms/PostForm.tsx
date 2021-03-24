@@ -1,11 +1,14 @@
-// NOTE: if postId is not provided, the form is left blank as
-// it represents a new post
-
 import useSupabase from 'hooks/useSupabase';
 import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
 
-const PostForm = ({ postId }) => {
+type PostFormProps = {
+  postId?: string;
+};
+
+// NOTE: if postId is not provided, the form is left blank as
+// it represents a new post
+const PostForm = ({ postId }: PostFormProps) => {
   const client = useSupabase();
 
   const initState: FormState = { status: 'idle', error: null };
