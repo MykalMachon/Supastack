@@ -3,14 +3,16 @@ import { FC, useEffect } from 'react';
 
 const Homepage: FC<any> = () => {
   return (
-    <main>
-      <h1>Your Posts</h1>
-      <section className="posts">
-        <IsAuthenticated>
-          <p>My posts go here...</p>
-        </IsAuthenticated>
+    <>
+      <section className="posts container-wrapper">
+        <div className="container">
+          <h1>Your Posts</h1>
+          <IsAuthenticated>
+            <p>My posts go here...</p>
+          </IsAuthenticated>
+        </div>
       </section>
-    </main>
+    </>
   );
 };
 
