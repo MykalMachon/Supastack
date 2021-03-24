@@ -1,11 +1,14 @@
-import { FC } from 'react';
+import IsAuthenticated from '@components/auth/IsAuthenticated';
+import { FC, useEffect } from 'react';
 
 const Homepage: FC<any> = () => {
   return (
     <main>
       <h1>Your Posts</h1>
       <section className="posts">
-        <p>My posts go here...</p>
+        <IsAuthenticated>
+          <p>My posts go here...</p>
+        </IsAuthenticated>
       </section>
     </main>
   );
