@@ -1,8 +1,17 @@
 import useAuth from 'hooks/useAuth';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-const IsAuthenticated = ({ children }) => {
+const IsAuthenticated = ({ children, strict }) => {
   const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (strict && !user) {
+      router.push('/signin');
+    }
+  }, [user]);
 
   if (user) return <>{children}</>;
   return (
