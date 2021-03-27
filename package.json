@@ -1,5 +1,5 @@
 {
-  "name": "Supastack",
+  "name": "supastack",
   "version": "1.0.0",
   "description": "a minimal blogging platform based on supabase",
   "main": "index.js",

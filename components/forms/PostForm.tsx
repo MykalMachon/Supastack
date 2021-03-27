@@ -31,6 +31,7 @@ const PostForm = ({ postId }: PostFormProps) => {
     };
     const { data, error } = await client.from('posts').insert(postData);
     if (error)
+      // @ts-ignore
       return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
     router.push(`/posts/${data[0].id}`);
     return dispatch({ type: 'SUBMIT_SUCCESS' });
