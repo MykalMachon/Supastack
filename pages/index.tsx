@@ -12,11 +12,11 @@ const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
           <IsAuthenticated>
             <section>
               <h1>Your Posts</h1>
-              <PostList posts={usersPosts} />
+              <PostList posts={usersPosts} size="small" />
             </section>
             <section>
               <h2>Recent Posts</h2>
-              <PostList posts={recentPosts} />
+              <PostList posts={recentPosts} size="medium" />
             </section>
           </IsAuthenticated>
         </div>

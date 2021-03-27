@@ -1,0 +1,16 @@
+.post-card {
+  &__small {
+    background: var(--highlightGradient);
+    border: 2px solid var(--bodyText);
+    border-radius: 6px;
+    padding: 1em;
+    max-width: 250px;
+    width: 100%;
+  }
+
+  &__medium {
+    background: var(--cardBg);
+    padding: 1em;
+    border-radius: 6px;
+  }
+}

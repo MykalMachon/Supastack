@@ -1,0 +1,41 @@
+.post__content {
+  display: grid;
+  grid-template-columns: 42em 1fr;
+  grid-gap: 1.8em;
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post__content__body {
+  h1 {
+    font-size: 3em;
+  }
+
+  p {
+    font-size: 1.25em;
+  }
+}
+
+.post__content__author {
+  position: static;
+  top: 4.5em;
+  @media screen and (max-width: 1000px) {
+    border-top: 1px solid var(--highlightBg);
+  }
+}
+
+p.author__intro {
+  color: #9ca3af;
+  margin-bottom: 0px;
+}
+
+p.author__name {
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-top: 0px;
+}
+
+p.author__bio {
+  font-size: 1.25em;
+}

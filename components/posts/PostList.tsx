@@ -1,20 +1,19 @@
-import Link from 'next/link';
+import PostCard from './PostCard';
+import styles from './PostList.module.scss';
 
-const PostList = ({ posts }) => {
+type PostListProps = {
+  size: 'small' | 'medium';
+  posts: Array<any>;
+};
+
+const PostList = ({ posts, size }: PostListProps) => {
   return (
-    <div className="post-list">
+    <div className={styles[`post-list__${size}`]}>
       {posts.length ? (
         <>
-          {posts.map((post) => {
-            return (
-              <article key={post.id}>
-                <p>{post.title}</p>
-                <Link href={`/posts/${post.id}`}>
-                  <a>Read more</a>
-                </Link>
-              </article>
-            );
-          })}
+          {posts.map((post) => (
+            <PostCard post={post} size={size} />
+          ))}
         </>
       ) : (
         <p>No Posts available</p>
