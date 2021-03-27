@@ -1,19 +1,49 @@
 import IsAuthenticated from '@components/auth/IsAuthenticated';
-import { FC, useEffect } from 'react';
+import PostList from '@components/posts/PostList';
+import { supabase } from '@utils/supabase';
+import { GetServerSideProps } from 'next';
+import { FC, useEffect, useState } from 'react';
 
-const Homepage: FC<any> = () => {
+const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
   return (
     <>
-      <section className="posts container-wrapper">
+      <div className="posts container-wrapper">
         <div className="container">
-          <h1>Your Posts</h1>
           <IsAuthenticated>
-            <p>My posts go here...</p>
+            <section>
+              <h1>Your Posts</h1>
+              <PostList posts={usersPosts} />
+            </section>
+            <section>
+              <h2>Recent Posts</h2>
+              <PostList posts={recentPosts} />
+            </section>
           </IsAuthenticated>
         </div>
-      </section>
+      </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  //  get 5 most recent posts
+  const { data: recentPosts } = await supabase.from('posts').select().limit(5);
+  // get posts by the logged in user
+  const { user } = await supabase.auth.api.getUserByCookie(req);
+  let usersPosts = [];
+  if (user) {
+    const { data: rawUsersPosts } = await supabase
+      .from('posts')
+      .select()
+      .filter('user_id', 'eq', user.id);
+    usersPosts = rawUsersPosts;
+  }
+  return {
+    props: {
+      recentPosts: recentPosts,
+      usersPosts: usersPosts,
+    },
+  };
 };
 
 export default Homepage;

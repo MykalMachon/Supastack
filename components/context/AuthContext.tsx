@@ -19,6 +19,14 @@ export const AuthProvider = ({ children }) => {
           user: supabase.auth.user(),
           auth: supabase.auth,
         });
+        fetch('/api/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify({ event, session }),
+        }).then((res) => res.json());
       });
     }
   }, [client]);

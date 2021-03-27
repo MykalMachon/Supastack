@@ -30,12 +30,18 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0px;
-  background: var(--primaryBg);
+body,
+input,
+textarea {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1em;
+}
+
+body {
+  margin: 0px;
+  background: var(--primaryBg);
   h1,
   h2,
   h3,
