@@ -12,10 +12,11 @@ const SignUpPage = () => {
   }, [user]);
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <SignupForm />
-    </main>
+    <div className="container-wrapper">
+      <section className="container container__auth">
+        <SignupForm />
+      </section>
+    </div>
   );
 };
 

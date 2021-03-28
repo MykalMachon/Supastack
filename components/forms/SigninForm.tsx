@@ -1,7 +1,7 @@
 import useSupabase from 'hooks/useSupabase';
 import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
-import styles from './Forms.module.scss';
+import Link from 'next/link';
 
 const SigninForm = () => {
   const client = useSupabase();
@@ -28,7 +28,8 @@ const SigninForm = () => {
   };
 
   return (
-    <form className={styles.primary_form} action="" onSubmit={handleSubmit}>
+    <form className="authForm" action="" onSubmit={handleSubmit}>
+      <h1>Sign In</h1>
       {/* @ts-ignore */}
       {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
@@ -42,6 +43,9 @@ const SigninForm = () => {
       <button type="submit" disabled={formState.status == 'submitting'}>
         Signin
       </button>
+      <p>
+        Don't have an account? <Link href={'/signup'}>sign up!</Link>
+      </p>
     </form>
   );
 };

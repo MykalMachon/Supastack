@@ -1,6 +1,6 @@
 import useSupabase from 'hooks/useSupabase';
-import { useRouter } from 'next/router';
-import { useEffect, useReducer } from 'react';
+import Link from 'next/link';
+import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
 
 const SignupForm = () => {
@@ -22,7 +22,8 @@ const SignupForm = () => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
+    <form className="authForm" action="" onSubmit={handleSubmit}>
+      <h1>Sign Up</h1>
       {/* @ts-ignore */}
       {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
@@ -37,6 +38,9 @@ const SignupForm = () => {
         Signup
       </button>
       {formState.status == 'success' ? <p>check your email!</p> : null}
+      <p>
+        Already have an account? <Link href={'/signin'}>sign in!</Link>
+      </p>
     </form>
   );
 };

@@ -14,19 +14,19 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // setup listener
     if (client) {
-      client.auth.onAuthStateChange((event, session) => {
-        setAuth({
-          user: supabase.auth.user(),
-          auth: supabase.auth,
-        });
-        fetch('/api/auth', {
+      client.auth.onAuthStateChange(async (event, session) => {
+        await fetch('/api/auth', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           credentials: 'same-origin',
           body: JSON.stringify({ event, session }),
-        }).then((res) => res.json());
+        });
+        setAuth({
+          user: supabase.auth.user(),
+          auth: supabase.auth,
+        });
       });
     }
   }, [client]);
