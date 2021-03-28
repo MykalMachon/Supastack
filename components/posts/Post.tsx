@@ -6,7 +6,7 @@ const Post = ({ post }) => {
     <article className={`${styles['post__content']} container`}>
       <div className={styles['post__content__body']}>
         <h1>{post.title}</h1>
-        <p>{post.content.body}</p>
+        <div dangerouslySetInnerHTML={{ __html: post.content.body }} />
       </div>
       <aside className={styles['post__content__author']}>
         <p className={styles['author__intro']}>written by...</p>

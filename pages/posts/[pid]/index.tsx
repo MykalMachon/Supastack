@@ -1,5 +1,6 @@
 import Post from '@components/posts/Post';
 import PostActions from '@components/posts/PostActions';
+import { convertMdToHtml } from '@utils/posts';
 import { supabase } from '@utils/supabase';
 import { GetServerSideProps } from 'next';
 
@@ -16,7 +17,7 @@ export default EditPostPage;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { pid } = context.params;
 
-  const { data: post } = await supabase
+  const { data: rawPost } = await supabase
     .from('posts')
     .select(
       `
@@ -31,12 +32,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       )
     `
     )
-    .filter('id', 'eq', pid);
+    .filter('id', 'eq', pid)
+    .single();
+
+  const post = {
+    ...rawPost,
+    content: {
+      body: convertMdToHtml(rawPost.content.body),
+    },
+  };
 
   return {
     props: {
       pid: pid,
-      post: post[0],
+      post: post,
     },
   };
 };
