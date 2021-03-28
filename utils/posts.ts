@@ -16,6 +16,7 @@ export const getUsersPosts = async (
     id,
     title,
     created_at,
+    updated_at,
     user_id (
       id,
       email,
@@ -23,6 +24,7 @@ export const getUsersPosts = async (
     )
     `
     )
+    .order('updated_at', { ascending: false })
     .filter('user_id', 'eq', userId);
   if (error) {
     throw new Error(error.message);
@@ -41,6 +43,7 @@ export const getRecentPosts = async (): Promise<Array<Post>> => {
     id,
     title,
     created_at,
+    updated_at,
     user_id (
       id,
       email,
