@@ -1,8 +1,14 @@
 .post-list {
   &__small {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(auto-fill, calc(250px - 1.4em));
     grid-gap: 1.2em;
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
     a {
       color: var(--bodyText);
     }

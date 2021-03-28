@@ -1,8 +1,9 @@
-import IsAuthenticated from '@components/auth/IsAuthenticated';
-import PostList from '@components/posts/PostList';
 import { supabase } from '@utils/supabase';
 import { GetServerSideProps } from 'next';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
+import IsAuthenticated from '@components/auth/IsAuthenticated';
+import PostList from '@components/posts/PostList';
+import { getRecentPosts, getUsersPosts } from '@utils/posts';
 
 const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
   return (
@@ -26,18 +27,9 @@ const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  //  get 5 most recent posts
-  const { data: recentPosts } = await supabase.from('posts').select().limit(5);
-  // get posts by the logged in user
   const { user } = await supabase.auth.api.getUserByCookie(req);
-  let usersPosts = [];
-  if (user) {
-    const { data: rawUsersPosts } = await supabase
-      .from('posts')
-      .select()
-      .filter('user_id', 'eq', user.id);
-    usersPosts = rawUsersPosts;
-  }
+  const recentPosts = await getRecentPosts();
+  const usersPosts = user ? await getUsersPosts(user.id) : [];
   return {
     props: {
       recentPosts: recentPosts,

@@ -1,6 +1,7 @@
 import useSupabase from 'hooks/useSupabase';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { formReducer, FormState } from './utils';
 
 type PostFormProps = {
@@ -8,13 +9,19 @@ type PostFormProps = {
   type?: 'new' | 'edit';
 };
 
-// NOTE: if postId is not provided, the form is left blank as
-// it represents a new post
 const PostForm = ({ post, type = 'new' }: PostFormProps) => {
   const client = useSupabase();
+  const router = useRouter();
 
   const initState: FormState = { status: 'idle', error: null };
+  const [currPost, setCurrPost] = useState(post || null);
   const [formState, dispatch] = useReducer(formReducer, initState);
+
+  useEffect(() => {
+    if (formState.status === 'success' && currPost) {
+      router.push(`/posts/${currPost.id}`);
+    }
+  }, [formState]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +37,14 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
     };
     switch (type) {
       case 'new':
-        const { error: newError } = await client.from('posts').insert(postData);
+        const { data: newPost, error: newError } = await client
+          .from('posts')
+          .insert(postData);
         if (newError)
           // @ts-ignore
           return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
+        setCurrPost(newPost[0]);
+
         break;
       case 'edit':
         const { error: editError } = await client
@@ -73,7 +84,7 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
         />
       </label>
       <button type="submit" disabled={formState.status == 'submitting'}>
-        Post
+        {type == 'new' ? 'Post' : 'Save Changes'}
       </button>
     </form>
   );

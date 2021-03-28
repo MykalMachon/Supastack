@@ -1,11 +1,17 @@
 .post-card {
   &__small {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: var(--highlightGradient);
     border: 2px solid var(--bodyText);
     border-radius: 6px;
     padding: 1em;
     max-width: 250px;
     width: 100%;
+    @media screen and (max-width: 1000px) {
+      max-width: 100%;
+    }
   }
 
   &__medium {
@@ -13,4 +19,19 @@
     padding: 1em;
     border-radius: 6px;
   }
+}
+
+.post-card__author {
+  font-size: 0.8em;
+  margin-bottom: 0.2em;
+}
+
+.post-card__title {
+  font-weight: bold;
+  margin: 0px;
+}
+
+.post-card__date {
+  margin-top: 0.2em;
+  font-size: 0.8em;
 }

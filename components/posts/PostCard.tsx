@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './PostCard.module.scss';
+import dayjs from 'dayjs';
 
 type PostCardProps = {
   size: 'small' | 'medium';
@@ -11,7 +12,12 @@ const PostCard = ({ size, post }: PostCardProps) => {
     case 'small':
       return (
         <article className={styles['post-card__small']}>
-          <p>{post.title}</p>
+          <div>
+            <p className={styles['post-card__title']}>{post.title}</p>
+            <p className={styles['post-card__date']}>
+              {dayjs(post.created_at).format('MMMM D')}
+            </p>
+          </div>
           <Link href={`/posts/${post.id}`}>
             <a>Read more</a>
           </Link>
@@ -20,7 +26,13 @@ const PostCard = ({ size, post }: PostCardProps) => {
     case 'medium':
       return (
         <article className={styles['post-card__medium']}>
-          <p>{post.title}</p>
+          <p className={styles['post-card__author']}>
+            {post.user_id.display_name}
+          </p>
+          <p className={styles['post-card__title']}>{post.title}</p>
+          <p className={styles['post-card__date']}>
+            {dayjs(post.created_at).format('MMMM D')}
+          </p>
           <Link href={`/posts/${post.id}`}>
             <a>Read more</a>
           </Link>
