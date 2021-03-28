@@ -1,4 +1,5 @@
 import styles from './Post.module.scss';
+import PostActions from './PostActions';
 
 const Post = ({ post }) => {
   return (
@@ -11,6 +12,7 @@ const Post = ({ post }) => {
         <p className={styles['author__intro']}>written by...</p>
         <p className={styles['author__name']}>{post.user_id.display_name}</p>
         <p className={styles['author__bio']}>{post.user_id.description}</p>
+        <PostActions post={post} />
       </aside>
     </article>
   );
