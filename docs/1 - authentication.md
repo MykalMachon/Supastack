@@ -4,6 +4,4 @@ This app uses Supabase's built in Authentication system and tables and a `public
 
 ## Enable Authentication In Supabase
 
-## Setup `public.auth` Table
-
-## Try signing in to our app!
+## Create a `public.auth` Table

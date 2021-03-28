@@ -24,6 +24,7 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "showdown": "^1.9.1",
+    "showdown-highlight": "^2.1.6",
     "typescript": "^4.2.2"
   },
   "dependencies": {

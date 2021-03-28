@@ -1,5 +1,4 @@
 import Post from '@components/posts/Post';
-import PostActions from '@components/posts/PostActions';
 import { convertMdToHtml } from '@utils/posts';
 import { supabase } from '@utils/supabase';
 import { GetServerSideProps } from 'next';

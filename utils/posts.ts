@@ -1,6 +1,7 @@
 import { supabase } from './supabase';
 import { Post } from './types';
 import { Converter } from 'showdown';
+import showdownHighlight from 'showdown-highlight';
 
 /**
  * get all posts made by the user
@@ -61,6 +62,8 @@ export const getRecentPosts = async (): Promise<Array<Post>> => {
 };
 
 export const convertMdToHtml = (postBody: string): string => {
-  const converter = new Converter();
+  const converter = new Converter({
+    extensions: [showdownHighlight],
+  });
   return converter.makeHtml(postBody);
 };

@@ -4,6 +4,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 import Layout from '@components/layout/Layout';
 
 import '@styles/main.scss';
+import '@styles/atom-one-dark.css';
 
 const SupastackApp = ({ Component, pageProps }: AppProps) => {
   return (
