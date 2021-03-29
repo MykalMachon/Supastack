@@ -1,0 +1,40 @@
+.nav__mobile {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  display: static;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  max-height: 4.8em;
+  height: 100%;
+  background: var(--cardBg);
+  width: 100%;
+  border-top: 1px solid var(--highlightBg);
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    grid-gap: 1.2em;
+    height: 100%;
+  }
+  span {
+    display: block;
+  }
+  li {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+  }
+}

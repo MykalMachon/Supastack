@@ -1,0 +1,24 @@
+.nav__desktop {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: var(--highlightText);
+      text-decoration: underline;
+    }
+    svg {
+      margin-right: 0.5em;
+    }
+  }
+
+  a,
+  button {
+    margin: 0px 1em;
+  }
+}
