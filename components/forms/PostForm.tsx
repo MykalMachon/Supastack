@@ -59,6 +59,21 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
     return dispatch({ type: 'SUBMIT_SUCCESS' });
   };
 
+  const deletePost = async (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_FORM' });
+    const { error } = await client
+      .from('posts')
+      .delete()
+      .match({ id: post.id });
+    if (error) {
+      // @ts-ignore
+      return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
+    }
+    router.push('/');
+    return dispatch({ type: 'SUBMIT_SUCCESS' });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {/* @ts-ignore */}
@@ -86,6 +101,7 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
       <button type="submit" disabled={formState.status == 'submitting'}>
         {type == 'new' ? 'Post' : 'Save Changes'}
       </button>
+      {type == 'edit' && <button onClick={deletePost}>Delete Post</button>}
     </form>
   );
 };

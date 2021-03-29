@@ -10,6 +10,13 @@ export type Post = {
   is_public: boolean;
 };
 
+export type User = {
+  id: string;
+  email: string;
+  display_name?: string;
+  description?: string;
+};
+
 export type IconProps = {
   active?: boolean;
 };
