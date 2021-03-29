@@ -91,7 +91,7 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
       <label htmlFor="content">
         Content
         <textarea
-          rows={20}
+          rows={15}
           cols={10}
           name="content"
           id="content"

@@ -1,11 +1,9 @@
 .post__content {
-  max-width: 100%;
-  width: 100%;
-  overflow-x: scroll;
   display: grid;
   grid-template-columns: 42em 1fr;
   grid-gap: 1.8em;
   @media screen and (max-width: 1000px) {
+    overflow-x: scroll;
     grid-template-columns: 1fr;
   }
 }

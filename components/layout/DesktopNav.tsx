@@ -8,6 +8,9 @@ const DesktopNav = () => {
   if (auth.user()) {
     return (
       <div className={styles['nav__desktop']}>
+        <Link href="/posts/new">
+          <a>New Post</a>
+        </Link>
         <Link href="/settings">
           <a>Settings</a>
         </Link>

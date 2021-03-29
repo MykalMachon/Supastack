@@ -16,8 +16,12 @@ const SettingsPage = ({ user }) => {
         <IsAuthenticated strict>
           <h1>Settings</h1>
           <p>All your settings should go here</p>
-          <AccountForm user={user} />
+          <section>
+            <h2>Account Info</h2>
+            <AccountForm user={user} />
+          </section>
           <section className="logout">
+            <h2>Logout</h2>
             <LogoutButton />
           </section>
         </IsAuthenticated>

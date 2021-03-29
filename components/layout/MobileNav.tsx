@@ -1,4 +1,5 @@
 import HomeIcon from '@components/icons/HomeIcon';
+import PencilIcon from '@components/icons/PencilIcon';
 import UserIcon from '@components/icons/UserIcon';
 import useAuth from 'hooks/useAuth';
 import Link from 'next/link';
@@ -20,21 +21,39 @@ const MobileNav = () => {
           </Link>
         </li>
         {user ? (
-          <li>
-            <Link href="/settings">
-              <a title="account settings">
-                <UserIcon active={router.pathname == '/settings'} />
-              </a>
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link href="/posts/new">
+                <a title="write new post">
+                  <PencilIcon active={router.pathname == '/posts/new'} />
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/settings">
+                <a title="account settings">
+                  <UserIcon active={router.pathname == '/settings'} />
+                </a>
+              </Link>
+            </li>
+          </>
         ) : (
-          <li>
-            <Link href="/signup">
-              <a title="Sign Up">
-                <UserIcon active={router.pathname == '/signup'} />
-              </a>
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link href="/signin">
+                <a title="Sign In">
+                  <UserIcon active={router.pathname == '/signin'} />
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/signup">
+                <a title="Sign Up">
+                  <UserIcon active={router.pathname == '/signup'} />
+                </a>
+              </Link>
+            </li>
+          </>
         )}
       </ul>
     </nav>
