@@ -14,6 +14,11 @@ const SupastackApp = ({ Component, pageProps }: AppProps) => {
         <Layout>
           <Head>
             <title>Supastack</title>
+            <link
+              rel="icon"
+              type="image/png"
+              href="https://supastack.netlify.app/favicon.png"
+            ></link>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"
