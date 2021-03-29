@@ -34,6 +34,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     .filter('id', 'eq', pid)
     .single();
 
+  if (!rawPost) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
+
   const post = {
     ...rawPost,
     content: {

@@ -10,16 +10,16 @@ const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
     <>
       <div className="posts container-wrapper">
         <div className="container">
-          <IsAuthenticated>
-            <section>
-              <h1>Your Posts</h1>
+          <section>
+            <h1>Your Posts</h1>
+            <IsAuthenticated>
               <PostList posts={usersPosts} size="small" />
-            </section>
-            <section>
-              <h2>Recent Posts</h2>
-              <PostList posts={recentPosts} size="medium" />
-            </section>
-          </IsAuthenticated>
+            </IsAuthenticated>
+          </section>
+          <section>
+            <h2>Recent Posts</h2>
+            <PostList posts={recentPosts} size="medium" />
+          </section>
         </div>
       </div>
     </>
