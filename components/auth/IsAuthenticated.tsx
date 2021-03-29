@@ -14,7 +14,7 @@ const IsAuthenticated = ({ children, strict }: isAuthenticatedProps) => {
 
   useEffect(() => {
     if (strict && !user) {
-      router.push('/signin');
+      router.push('/login');
     }
   }, [user]);
 
@@ -24,8 +24,8 @@ const IsAuthenticated = ({ children, strict }: isAuthenticatedProps) => {
       <h3>You need to login</h3>
       <p>
         You need to login to see this!{' '}
-        <Link href={'/signin'}>
-          <a>Signin</a>
+        <Link href={'/login'}>
+          <a>Login</a>
         </Link>{' '}
         or <Link href={'/signup'}>Signup</Link>
       </p>

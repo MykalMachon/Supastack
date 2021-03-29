@@ -39,7 +39,7 @@ const SignupForm = () => {
       </button>
       {formState.status == 'success' ? <p>check your email!</p> : null}
       <p>
-        Already have an account? <Link href={'/signin'}>sign in!</Link>
+        Already have an account? <Link href={'/login'}>login!</Link>
       </p>
     </form>
   );

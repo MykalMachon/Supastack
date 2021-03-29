@@ -6,10 +6,10 @@ import { User } from '@utils/types';
 import { GetServerSideProps } from 'next';
 
 type SettingsPageProps = {
-  user?: User | null;
+  user?: User;
 };
 
-const SettingsPage = ({ user }) => {
+const SettingsPage = ({ user }: SettingsPageProps) => {
   return (
     <div className="settings container-wrapper">
       <div className="container">
@@ -32,11 +32,21 @@ const SettingsPage = ({ user }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const { user } = await supabase.auth.api.getUserByCookie(req);
+  if (!user) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
   const { data: publicUser } = await supabase
     .from('users')
     .select()
     .filter('id', 'eq', user.id)
     .single();
+
   return {
     props: {
       user: publicUser || null,

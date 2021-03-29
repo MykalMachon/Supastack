@@ -19,8 +19,8 @@ const DesktopNav = () => {
   } else {
     return (
       <div className={styles['nav__desktop']}>
-        <Link href="/signin">
-          <a>Signin</a>
+        <Link href="/login">
+          <a>Login</a>
         </Link>
         <Link href="/signup">
           <a>Signup</a>

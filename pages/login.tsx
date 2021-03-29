@@ -1,4 +1,4 @@
-import SigninForm from '@components/forms/SigninForm';
+import LoginForm from '@components/forms/LoginForm';
 import useAuth from 'hooks/useAuth';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -14,7 +14,7 @@ const SignInPage = () => {
   return (
     <div className="container-wrapper">
       <section className="container container__auth">
-        <SigninForm />
+        <LoginForm />
       </section>
     </div>
   );

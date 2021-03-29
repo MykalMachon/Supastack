@@ -20,41 +20,20 @@ const MobileNav = () => {
             </a>
           </Link>
         </li>
-        {user != false ? (
-          <>
-            <li>
-              <Link href="/posts/new">
-                <a title="write new post">
-                  <PencilIcon active={router.pathname == '/posts/new'} />
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/settings">
-                <a title="account settings">
-                  <UserIcon active={router.pathname == '/settings'} />
-                </a>
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link href="/signin">
-                <a title="Sign In">
-                  <UserIcon active={router.pathname == '/signin'} />
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/signup">
-                <a title="Sign Up">
-                  <UserIcon active={router.pathname == '/signup'} />
-                </a>
-              </Link>
-            </li>
-          </>
-        )}
+        <li>
+          <Link href="/posts/new">
+            <a title="write new post">
+              <PencilIcon active={router.pathname == '/posts/new'} />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/settings">
+            <a title="account settings">
+              <UserIcon active={router.pathname == '/settings'} />
+            </a>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

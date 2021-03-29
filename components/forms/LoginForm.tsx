@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
 import Link from 'next/link';
 
-const SigninForm = () => {
+const LoginForm = () => {
   const client = useSupabase();
 
   const initState: FormState = { status: 'idle', error: null };
@@ -29,7 +29,7 @@ const SigninForm = () => {
 
   return (
     <form className="authForm" action="" onSubmit={handleSubmit}>
-      <h1>Sign In</h1>
+      <h1>Login</h1>
       {/* @ts-ignore */}
       {formState.error ? <p>{formState.error.message}</p> : null}
       <label htmlFor="email">
@@ -41,7 +41,7 @@ const SigninForm = () => {
         <input type="password" name="password" id="password" />
       </label>
       <button type="submit" disabled={formState.status == 'submitting'}>
-        Signin
+        Login
       </button>
       <p>
         Don't have an account? <Link href={'/signup'}>sign up!</Link>
@@ -50,4 +50,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default LoginForm;
