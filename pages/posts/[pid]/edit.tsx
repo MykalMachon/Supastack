@@ -2,17 +2,23 @@ import IsAuthenticated from '@components/auth/IsAuthenticated';
 import PostForm from '@components/forms/PostForm';
 import { supabase } from '@utils/supabase';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 const EditPostPage = ({ post }) => {
   return (
-    <section className="posts-edit container-wrapper">
-      <div className="container">
-        <h1>Edit Post</h1>
-        <IsAuthenticated strict>
-          <PostForm post={post} type="edit" />
-        </IsAuthenticated>
-      </div>
-    </section>
+    <>
+      <Head>
+        <title>Supastack: editing {post.title}</title>
+      </Head>
+      <section className="posts-edit container-wrapper">
+        <div className="container">
+          <h1>Edit Post</h1>
+          <IsAuthenticated strict>
+            <PostForm post={post} type="edit" />
+          </IsAuthenticated>
+        </div>
+      </section>
+    </>
   );
 };
 

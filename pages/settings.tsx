@@ -4,6 +4,7 @@ import AccountForm from '@components/forms/AccountForm';
 import { supabase } from '@utils/supabase';
 import { User } from '@utils/types';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 type SettingsPageProps = {
   user?: User;
@@ -11,22 +12,28 @@ type SettingsPageProps = {
 
 const SettingsPage = ({ user }: SettingsPageProps) => {
   return (
-    <div className="settings container-wrapper">
-      <div className="container">
-        <IsAuthenticated strict>
-          <h1>Settings</h1>
-          <p>All your settings should go here</p>
-          <section>
-            <h2>Account Info</h2>
-            <AccountForm user={user} />
-          </section>
-          <section className="logout">
-            <h2>Logout</h2>
-            <LogoutButton />
-          </section>
-        </IsAuthenticated>
+    <>
+      <Head>
+        <title>Supastack: Settings</title>
+        <meta property="og:title" content="Supastack: Settings" />
+      </Head>
+      <div className="settings container-wrapper">
+        <div className="container">
+          <IsAuthenticated strict>
+            <h1>Settings</h1>
+            <p>All your settings should go here</p>
+            <section>
+              <h2>Account Info</h2>
+              <AccountForm user={user} />
+            </section>
+            <section className="logout">
+              <h2>Logout</h2>
+              <LogoutButton />
+            </section>
+          </IsAuthenticated>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -2,16 +2,23 @@ import Post from '@components/posts/Post';
 import { convertMdToHtml } from '@utils/posts';
 import { supabase } from '@utils/supabase';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
-const EditPostPage = ({ post }) => {
+const PostPage = ({ post }) => {
   return (
-    <div className="container-wrapper">
-      <Post post={post} />
-    </div>
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta property="og:title" content={`Supastack: ${post.title}`} />
+      </Head>
+      <div className="container-wrapper">
+        <Post post={post} />
+      </div>
+    </>
   );
 };
 
-export default EditPostPage;
+export default PostPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { pid } = context.params;

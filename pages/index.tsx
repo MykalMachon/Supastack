@@ -4,10 +4,15 @@ import { FC } from 'react';
 import IsAuthenticated from '@components/auth/IsAuthenticated';
 import PostList from '@components/posts/PostList';
 import { getRecentPosts, getUsersPosts } from '@utils/posts';
+import Head from 'next/head';
 
 const Homepage: FC<any> = ({ recentPosts, usersPosts }) => {
   return (
     <>
+      <Head>
+        <title>Supastack: Home</title>
+        <meta property="og:title" content="Supastack: Home" />
+      </Head>
       <div className="posts container-wrapper">
         <div className="container">
           <section>
