@@ -9,6 +9,10 @@
     padding: 1em;
     max-width: 250px;
     width: 100%;
+    a,
+    p {
+      color: #e5e7eb;
+    }
     @media screen and (max-width: 1000px) {
       max-width: 100%;
     }

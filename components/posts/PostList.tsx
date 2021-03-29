@@ -1,9 +1,10 @@
+import { Post } from '@utils/types';
 import PostCard from './PostCard';
 import styles from './PostList.module.scss';
 
 type PostListProps = {
   size: 'small' | 'medium';
-  posts: Array<any>;
+  posts: Array<Post>;
 };
 
 const PostList = ({ posts, size }: PostListProps) => {
@@ -12,7 +13,7 @@ const PostList = ({ posts, size }: PostListProps) => {
       {posts.length ? (
         <>
           {posts.map((post) => (
-            <PostCard post={post} size={size} />
+            <PostCard key={post.id} post={post} size={size} />
           ))}
         </>
       ) : (

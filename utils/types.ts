@@ -9,3 +9,7 @@ export type Post = {
   user_id: string;
   is_public: boolean;
 };
+
+export type IconProps = {
+  active?: boolean;
+};

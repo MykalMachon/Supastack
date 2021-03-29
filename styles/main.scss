@@ -106,6 +106,9 @@ button {
   width: 100%;
   padding: 0px 1em;
   margin-bottom: 2em;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 6em;
+  }
 }
 
 label {
@@ -148,4 +151,10 @@ label {
       background: var(--cardBg);
     }
   }
+}
+
+// Icon Styles
+svg {
+  width: 24px;
+  height: 24px;
 }
