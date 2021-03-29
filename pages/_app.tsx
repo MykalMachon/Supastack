@@ -21,7 +21,7 @@ const SupastackApp = ({ Component, pageProps }: AppProps) => {
             <meta property="og:title" content="Supastack" />
             <meta
               property="og:description"
-              content="A Minimal Blogging Platform."
+              content="A minimal blogging platform."
             />
             <meta
               property="og:image"

@@ -30,6 +30,19 @@ const SettingsPage = ({ user }: SettingsPageProps) => {
               <h2>Logout</h2>
               <LogoutButton />
             </section>
+            <section>
+              <p>
+                This project was built by{' '}
+                <a href="https://twitter.com/MykalMachon">Mykal Machon</a> for
+                COMP 430 at UFV
+              </p>
+              <p>
+                The source code is{' '}
+                <a href="https://github.com/MykalMachon/Supastack">
+                  freely available on Github
+                </a>
+              </p>
+            </section>
           </IsAuthenticated>
         </div>
       </div>
