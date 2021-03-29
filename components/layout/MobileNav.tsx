@@ -20,7 +20,7 @@ const MobileNav = () => {
             </a>
           </Link>
         </li>
-        {user ? (
+        {user != false ? (
           <>
             <li>
               <Link href="/posts/new">

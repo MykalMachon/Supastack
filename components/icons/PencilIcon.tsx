@@ -6,7 +6,7 @@ const PencilIcon = ({ active }: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      stroke={active ? 'var(--highlightBg)' : 'var(--bodyText)'}
     >
       <path
         strokeLinecap="round"
