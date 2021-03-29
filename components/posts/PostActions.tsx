@@ -1,15 +1,11 @@
 import IsAuthenticated from '@components/auth/IsAuthenticated';
 import useAuth from 'hooks/useAuth';
 import Link from 'next/link';
+import LikeButton from './LikeButton';
 import styles from './PostActions.module.scss';
 
 const PostActions = ({ post }) => {
   const { user } = useAuth();
-
-  const likePost = () => {
-    // STUB this should like the post
-    // OR unlike it, if it's already liked
-  };
 
   return (
     <div>
@@ -19,9 +15,7 @@ const PostActions = ({ post }) => {
             <a>edit post</a>
           </Link>
         ) : (
-          <button onClick={likePost} className={styles['post__actions__like']}>
-            <img src="/heart.svg" alt="heart icon" />
-          </button>
+          <LikeButton post={post} />
         )}
       </IsAuthenticated>
     </div>

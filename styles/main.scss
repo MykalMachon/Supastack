@@ -78,6 +78,13 @@ button {
   padding: 0.75em 1.25em;
   border: 1px solid var(--highlightBg);
   border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  svg {
+    margin-right: 0.6em;
+  }
   &:hover {
     background: var(--highlightBg);
     cursor: pointer;
