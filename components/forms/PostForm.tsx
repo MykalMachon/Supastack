@@ -1,8 +1,8 @@
 import useSupabase from 'hooks/useSupabase';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useReducer, useState } from 'react';
 import { formReducer, FormState } from './utils';
+import { sanitize } from 'dompurify';
 
 type PostFormProps = {
   post?: any;
@@ -29,7 +29,7 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
     const postData = {
       title: e.target.title.value,
       content: {
-        body: e.target.content.value,
+        body: sanitize(e.target.content.value),
       },
       updated_at: new Date(),
       user_id: client.auth.user().id,
@@ -42,18 +42,24 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
           .insert(postData);
         if (newError)
           // @ts-ignore
-          return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
+          return dispatch({ type: 'SUBMIT_ERROR', payload: { err: newError } });
         setCurrPost(newPost[0]);
 
         break;
       case 'edit':
-        const { error: editError } = await client
+        const editResponse = await client
           .from('posts')
           .update(postData)
           .match({ id: post.id });
-        if (editError)
+        if (editResponse.error) {
+          console.log(post.id);
+          console.log(editResponse);
           // @ts-ignore
-          return dispatch({ type: 'SUBMIT_ERROR', payload: { err: error } });
+          return dispatch({
+            type: 'SUBMIT_ERROR',
+            payload: { err: editResponse.error },
+          });
+        }
         break;
     }
     return dispatch({ type: 'SUBMIT_SUCCESS' });

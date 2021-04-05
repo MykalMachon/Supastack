@@ -2,6 +2,7 @@ import { User } from '@utils/types';
 import useSupabase from 'hooks/useSupabase';
 import { useReducer } from 'react';
 import { formReducer, FormState } from './utils';
+import { sanitize } from 'dompurify';
 
 type AccountFormProps = {
   user?: User;
@@ -18,7 +19,7 @@ const AccountForm = ({ user }: AccountFormProps) => {
     dispatch({ type: 'SUBMIT_FORM' });
     const accountData = {
       display_name: e.target.displayName.value,
-      description: e.target.description.value,
+      description: sanitize(e.target.description.value),
     };
     const { error } = await client
       .from('users')
