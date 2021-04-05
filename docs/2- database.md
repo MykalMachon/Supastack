@@ -1,9 +1,9 @@
-# Database Setup
+## Database Setup
 
 This document outlines all the SQL commands we need to setup the rest of the tables in the database.
 For the sake of time, and considering I developed Supastack for this tutorial, these three tables should be enough to illustrate some core database concepts.
 
-## Posts Table
+### Posts Table
 
 This table represents each one of the posts that will be made on the platform.
 
@@ -20,7 +20,7 @@ create table public.posts (
 )
 ```
 
-## Likes
+### Likes Table
 
 This table contains all likes on posts- this way users can only like a post once, etc, etc.
 
