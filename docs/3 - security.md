@@ -106,4 +106,4 @@ Here's a query that prints out our row-level policies:
 select * from pg_policies
 ```
 
-after we run this, we can see all the policies we've created. Double check that you have all your policies in place, and let's move on.
+after we run this, we can see all the policies we've created. Double check that you have all your policies in place, and let's move on to the next step.

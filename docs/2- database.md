@@ -31,3 +31,4 @@ create table public.likes (
   user_id   uuid references public.users not null
 )
 ```
+These are the primary tables we'll need for the rest of the tutorial. 

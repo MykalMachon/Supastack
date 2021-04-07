@@ -54,9 +54,9 @@ const PostForm = ({ post, type = 'new' }: PostFormProps) => {
         if (editResponse.error) {
           console.log(post.id);
           console.log(editResponse);
-          // @ts-ignore
           return dispatch({
             type: 'SUBMIT_ERROR',
+            // @ts-ignore
             payload: { err: editResponse.error },
           });
         }
