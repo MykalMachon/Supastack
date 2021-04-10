@@ -10,4 +10,4 @@ This project is part of my term project for COMP 430 - Advanced Database Concept
 
 ## Documentation
 
-If you want to setup your own Supastack instance, see the numbered markdown files in the `/docs/` folder. **Read the docs in order, if you follow the instructions in each file and you should be good to go!**
+If you want to setup your own Supastack instance, see [this tutorial document](https://docs.google.com/document/d/1MfqTH5ndbGTKz7lMd6zHLHDPXbyHDDIL3BUnXKkkWCk/edit?usp=sharing) as well as [this video](https://youtu.be/EMeq6feDJWQ) that goes over all the steps to set up supastack & deploy the app! (if you prefer video > text)
